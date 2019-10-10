@@ -64,12 +64,10 @@ def String convertFile(String uri) {
 }
 
 def writeXmlToFile(String outputPath, String filename, String xml) {
-    // File directory = new File(path + "/out/")
     File directory = new File(outputPath)
     if(!directory.exists()) { directory.mkdir()}
 
     File file = new File(outputPath  + filename.replace(".csv", ".xml"))
-    // File file = new File(folder + "/out/" + filename.replace(".csv", ".xml"))
     file.write(xml)
 
     System.out.println("Done writing to " + file.toString())
