@@ -38,6 +38,9 @@ for ( ; ; ) {
 
     //Poll all the events queued for the key
     for ( WatchEvent<?> event: key.pollEvents()){
+	    //If files gets written to the folder from another application it is possible that this one will pick it up 
+        // before it's done writing, resulting in half a read. In that case, cheat it with the below thread.sleep
+        //Thread.sleep(2000)
         String filename = event.context().getFileName().toString()
         String uri = watchPath.toString() + "/" + filename
         def xml = convertFile(uri)
