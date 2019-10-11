@@ -39,7 +39,7 @@ for ( ; ; ) {
     //Poll all the events queued for the key
     for ( WatchEvent<?> event: key.pollEvents()){
         String filename = event.context().getFileName().toString()
-        String uri = watchPath.toString() filename
+        String uri = watchPath.toString() + "/" + filename
         def xml = convertFile(uri)
         writeXmlToFile(outputPath, filename, xml)
     }
